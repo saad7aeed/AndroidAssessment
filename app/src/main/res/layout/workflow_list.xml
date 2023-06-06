@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="java.util.ArrayList" />
+        <import type="android.view.View" />
+        <variable
+            name="dataList"
+            type="String" />
+
+        <variable
+            name="feedbackList"
+            type="ArrayList&lt;String>" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/remarksbox_hideandshow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/border_darkblue"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/counter"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/dark_blue" />
+
+                <com.example.plateform.utils.CustomTextView
+                    android:id="@+id/desgination"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:gravity="center|left"
+                    android:text="@string/stage_info"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/_13sdp"
+                    app:font_name="objectiveBold" />
+
+                <ImageButton
+                    android:id="@+id/showHideInputStage"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="0.3"
+                    android:background="@android:color/transparent"
+                    android:padding="20dp"
+                    app:srcCompat="@drawable/icon_angle_up" />
+
+            </LinearLayout>
+            <!--                    android:onClick="@{workFlowBox.VISIBLE == workFlowBox.GONE ? View.VISIBLE: View.GONE}"-->
+
+            <LinearLayout
+                android:id="@+id/workFlowBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="3dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <com.example.plateform.utils.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="0.2"
+                        android:text="@string/Remarks"
+                        android:textColor="@color/air_awesome_purple_100"
+                        app:font_name="objectiveBold" />
+
+                    <EditText
+                        android:id="@+id/qainchargeremarks"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:hint="@string/enter_remarks"
+                        android:inputType="textMultiLine"
+                        android:lines="2"
+                        android:maxLines="2"
+                        android:minLines="2"
+                        android:paddingStart="10dp"
+                        android:textColor="@color/dark_blue"
+                        android:textColorHint="@color/purple_200"
+                        android:textSize="@dimen/_12sdp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/approvedby_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <com.example.plateform.utils.CustomTextView
+                        android:id="@+id/header"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="@string/approvedby"
+                        android:textColor="@color/air_awesome_purple_100"
+                        android:textSize="@dimen/_12sdp"
+                        app:font_name="objectiveBold" />
+
+                    <com.example.plateform.utils.CustomTextView
+                        android:id="@+id/approvedby"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@+id/header"
+                        android:inputType="textMultiLine"
+                        android:lines="3"
+                        android:maxLines="5"
+                        android:minLines="1"
+                        android:text="Area Manager"
+                        android:textColor="@color/purple_200"
+                        android:textSize="@dimen/_10sdp"
+                        tools:ignore="TextViewEdits"
+                        app:font_name="objectiveRegular"/>
+
+
+                    <FrameLayout
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="false"
+                        android:layout_centerHorizontal="true"
+                        android:layout_weight="0.5">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/attachment"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                android:layout_alignParentEnd="false"
+                                android:layout_alignParentBottom="false"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginBottom="7dp"
+                                android:layout_weight="0.1"
+                                android:clickable="true"
+                                android:elevation="10dp"
+                                app:backgroundTint="@color/air_awesome_purple_200"
+                                app:fabSize="mini"
+                                app:srcCompat="@drawable/ic_attach_file" />
+                        </RelativeLayout>
+
+                    </FrameLayout>
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/border_darkblue"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="0.15"
+                        android:gravity="center"
+                        android:text=">"
+                        android:textColor="@color/air_awesome_purple_100"
+                        android:textSize="@dimen/_20sdp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="0.55"
+                        android:inputType="textMultiLine"
+                        android:lines="3"
+                        android:maxLines="5"
+                        android:minLines="1"
+                        android:text="CC"
+                        android:textColor="@color/air_awesome_purple_100"
+                        android:textSize="@dimen/_18sdp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/intimatetoo_button"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.15"
+                        android:background="@android:color/transparent"
+                        android:padding="10dp"
+                        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+                    <ImageButton
+                        android:id="@+id/showHideDetailintimatetoo"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="0.15"
+                        android:background="@android:color/transparent"
+                        android:padding="10dp"
+                        app:srcCompat="@drawable/icon_angle_up" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/intimate_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_10sdp" />
+
+                    <TextView
+                        android:id="@+id/iniatedToo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="Sir Sarfraz, Saleem, Shirgeel, Hassan"
+                        android:textColor="@color/purple_200" />
+
+                    <ListView
+                        android:id="@+id/intimatetoo_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:scrollbars="none"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/feedbackobjectupper_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border_darkblue"
+                        android:orientation="horizontal"
+                        android:visibility="visible"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="0.1"
+                            android:gravity="center"
+                            android:text=">"
+                            android:textColor="@color/air_awesome_purple_100"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="0.75"
+                            android:inputType="textMultiLine"
+                            android:lines="3"
+                            android:maxLines="5"
+                            android:minLines="1"
+                            android:text="Feed Back"
+                            android:textColor="@color/air_awesome_purple_100"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/showHideDetailfeedbacktoo"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:layout_weight="0.1"
+                            android:background="@android:color/transparent"
+                            android:padding="20dp"
+                            app:srcCompat="@drawable/icon_angle_up" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/feedbackobject_cover"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <androidx.core.widget.NestedScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/feedbackList"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:nestedScrollingEnabled="false"/>
+                        </androidx.core.widget.NestedScrollView>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

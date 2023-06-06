@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="?attr/actionBarSize">
+
+
+    <com.example.plateform.utils.CustomTextView
+        android:id="@+id/searchTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:includeFontPadding="false"
+        android:text="@string/select_customer"
+        android:textColor="@color/dark_blue"
+        android:textSize="@dimen/_12ssp"
+        app:font_name="objectiveMedium" />
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/spinnerCustomers"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_below="@+id/searchTitleText"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:background="@color/air_purple_light"
+        android:backgroundTint="@color/air_purple_light"
+        android:textColor="@color/dark_blue"
+        android:textSize="13sp"
+        app:ms_background_color="@color/white"
+        app:ms_padding_bottom="1dp"
+        app:ms_padding_top="-0.6dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnSearch"
+        android:layout_below="@+id/spinnerCustomers"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSearch"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@drawable/shape_rectangle_purple_lite_round"
+        android:clickable="false"
+        android:fontFamily="@font/objective_regular"
+        android:text="@string/submit_text"
+        android:textAllCaps="false"
+        android:textColor="@color/air_purple"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

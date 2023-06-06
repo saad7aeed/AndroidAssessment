@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.example.plateform.utils.databindingutlis.StringUtils"/>
+        <variable
+            name="dataList"
+            type="String" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/bagsMainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <com.example.plateform.utils.CustomTextView
+                android:id="@+id/tvCustomerName"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_35sdp"
+                android:includeFontPadding="false"
+                android:text="@{StringUtils.terminalName(dataList)}"
+                android:textColor="@color/air_awesome_purple_200"
+                android:textSize="@dimen/_12ssp"
+                app:font_name="objectiveMedium" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

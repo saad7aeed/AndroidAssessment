@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dataList"
+            type="String" />
+
+        <variable
+            name="onClick"
+            type="com.example.plateform.core.interfaces.CustomerActivityInterface" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/bagsMainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/commentorProfileImage"
+                    android:layout_width="@dimen/_45sdp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/profile_image" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:orientation="vertical">
+
+                    <com.example.plateform.utils.CustomTextView
+                        android:id="@+id/commentorName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:text="@string/dash"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="@dimen/_14ssp"
+                        app:font_name="objectiveRegular" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/commentorGreenTick"
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:src="@drawable/tick_icon" />
+
+                <com.example.plateform.utils.CustomTextView
+                    android:id="@+id/commentorTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:includeFontPadding="false"
+                    android:text="@string/dash"
+                    android:textColor="@color/p_purple"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/_10ssp"
+                    app:font_name="objectiveRegular" />
+
+                <ImageView
+                    android:layout_width="@dimen/_15sdp"
+                    android:layout_height="@dimen/_12sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:src="@drawable/three_dots" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_60sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:orientation="vertical">
+
+            <com.example.plateform.utils.CustomTextView
+                android:id="@+id/commentorComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:includeFontPadding="false"
+                android:text="@string/dash"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/_10ssp"
+                app:font_name="objectiveRegular" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:src="@drawable/heart" />
+
+                <com.example.plateform.utils.CustomTextView
+                    android:id="@+id/commentorLikeCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:includeFontPadding="false"
+                    android:text="@string/dash"
+                    android:textColor="@color/p_purple"
+                    android:textSize="@dimen/_10ssp"
+                    app:font_name="objectiveRegular" />
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:src="@drawable/comment_icon" />
+
+                <com.example.plateform.utils.CustomTextView
+                    android:id="@+id/commentorCommentCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:includeFontPadding="false"
+                    android:text="@string/dash"
+                    android:textColor="@color/p_purple"
+                    android:textSize="@dimen/_10ssp"
+                    app:font_name="objectiveRegular" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/subCommentSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_60sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:nestedScrollingEnabled="false"
+            tools:itemCount="1"
+            android:visibility="visible"
+            tools:listitem="@layout/item_list_sub_comments" />
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="java.util.ArrayList" />
+
+        <import type="android.view.View" />
+
+        <import type="com.example.plateform.core.model.ItemList" />
+
+        <import type="com.example.plateform.core.interfaces.CustomerActivityInterface" />
+
+        <variable
+            name="onClick"
+            type="CustomerActivityInterface" />
+
+        <variable
+            name="data"
+            type="ArrayList&lt;String>" />
+
+        <variable
+            name="workFlowData"
+            type="ArrayList&lt;String>" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutCover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        tools:context="com.example.plateform.core.ui.CustomerListActivity">
+
+        <LinearLayout
+            android:id="@+id/headerCover"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:background="@color/white"
+            android:elevation="@dimen/_10sdp"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:onClick="@{() -> onClick.onBackClick()}"
+                android:src="@drawable/back_arrow" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_26sdp"
+                android:orientation="vertical">
+
+                <com.example.plateform.utils.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="@string/main_title"
+                    android:textColor="@color/dark_blue"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/_14ssp"
+                    app:font_name="objectiveRegular" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:src="@drawable/bell" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/headerCover">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/customerRev"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_200sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:visibility="@{data.size() > 0? View.VISIBLE: View.GONE}"
+                    app:customerList="@{data}" />
+
+                <RelativeLayout
+                    android:id="@+id/workFlowTitleCover"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/customerRev"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/border_darkblue">
+
+                    <com.example.plateform.utils.CustomTextView
+                        android:id="@+id/workFlowTitleText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_4sdp"
+                        android:layout_toStartOf="@+id/showHideDetailReviewsButton"
+                        android:includeFontPadding="false"
+                        android:text="@string/ApprovalRemarks"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="@dimen/_12ssp"
+                        app:font_name="objectiveBold" />
+
+                    <ImageButton
+                        android:id="@+id/showHideDetailReviewsButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@android:color/transparent"
+                        android:padding="20dp"
+                        app:srcCompat="@drawable/icon_angle_up" />
+                </RelativeLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/workFlowRev"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/workFlowTitleCover"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:visibility="@{workFlowData.size() > 0? View.VISIBLE: View.GONE}"
+                    app:workFlowList="@{workFlowData}" />
+
+                <LinearLayout
+                    android:id="@+id/remarksbox_hideandshow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/workFlowRev"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:background="@drawable/border_darkblue"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/counter"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.3"
+                            android:gravity="center"
+                            android:text="5"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="@dimen/_14sdp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/dark_blue" />
+
+                        <com.example.plateform.utils.CustomTextView
+                            android:id="@+id/desgination"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1.4"
+                            android:gravity="center|left"
+                            android:text="Current Stage"
+                            android:textColor="@color/dark_blue"
+                            android:textSize="@dimen/_13sdp"
+                            app:font_name="objectiveBold" />
+
+                        <ImageButton
+                            android:id="@+id/showHideInputStage"
+                            android:layout_width="0dp"
+                            android:layout_height="60dp"
+                            android:layout_weight="0.3"
+                            android:background="@android:color/transparent"
+                            android:padding="20dp"
+                            app:srcCompat="@drawable/icon_angle_up" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/qa_incharge_box"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <com.example.plateform.utils.CustomTextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_weight="0.2"
+                                android:text="@string/Remarks"
+                                android:textColor="@color/air_awesome_purple_100"
+                                app:font_name="objectiveBold" />
+
+                            <EditText
+                                android:id="@+id/qainchargeremarks"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.8"
+                                android:hint="@string/enter_remarks"
+                                android:inputType="textMultiLine"
+                                android:lines="2"
+                                android:maxLines="2"
+                                android:minLines="2"
+                                android:paddingStart="10dp"
+                                android:textColor="@color/dark_blue"
+                                android:textColorHint="@color/purple_200"
+                                android:textSize="@dimen/_12sdp" />
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/approvedby_cover"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal"
+                            android:visibility="visible">
+
+                            <com.example.plateform.utils.CustomTextView
+                                android:id="@+id/header"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:gravity="center"
+                                android:text="@string/approvedby"
+                                android:textColor="@color/air_awesome_purple_100"
+                                android:textSize="@dimen/_12sdp"
+                                android:visibility="invisible"
+                                app:font_name="objectiveBold" />
+
+                            <TextView
+                                android:id="@+id/approvedby"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="5dp"
+                                android:layout_toEndOf="@+id/header"
+                                android:inputType="textMultiLine"
+                                android:lines="3"
+                                android:maxLines="5"
+                                android:minLines="1"
+                                android:text=""
+                                android:textColor="@color/purple_200"
+                                android:textSize="@dimen/_10sdp"
+                                tools:ignore="TextViewEdits" />
+
+
+                            <FrameLayout
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="false"
+                                android:layout_centerHorizontal="true"
+                                android:layout_weight="0.5">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+
+                                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                        android:id="@+id/attachment"
+                                        android:layout_width="50dp"
+                                        android:layout_height="40dp"
+                                        android:layout_alignParentEnd="false"
+                                        android:layout_alignParentBottom="false"
+                                        android:layout_centerHorizontal="true"
+                                        android:layout_marginTop="7dp"
+                                        android:layout_marginBottom="7dp"
+                                        android:layout_weight="0.1"
+                                        android:clickable="true"
+                                        android:elevation="10dp"
+                                        app:backgroundTint="@color/air_awesome_purple_200"
+                                        app:fabSize="mini"
+                                        app:srcCompat="@drawable/ic_attach_file" />
+                                </RelativeLayout>
+
+                            </FrameLayout>
+
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/border_darkblue"
+                            android:orientation="horizontal"
+                            android:visibility="visible"
+                            android:weightSum="1">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="0.15"
+                                android:gravity="center"
+                                android:text=">"
+                                android:textColor="@color/air_awesome_purple_100"
+                                android:textSize="@dimen/_20sdp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="5dp"
+                                android:layout_weight="0.55"
+                                android:inputType="textMultiLine"
+                                android:lines="3"
+                                android:maxLines="5"
+                                android:minLines="1"
+                                android:text="CC"
+                                android:textColor="@color/air_awesome_purple_100"
+                                android:textSize="@dimen/_18sdp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/intimatetoo_button"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.15"
+                                android:background="@android:color/transparent"
+                                android:padding="10dp"
+                                app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+
+                            <ImageButton
+                                android:id="@+id/showHideDetailintimatetoo"
+                                android:layout_width="0dp"
+                                android:layout_height="45dp"
+                                android:layout_weight="0.15"
+                                android:background="@android:color/transparent"
+                                android:padding="10dp"
+                                app:srcCompat="@drawable/icon_angle_up" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/intimate_cover"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_10sdp" />
+
+                            <TextView
+                                android:id="@+id/qaincharge_iniatedto"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:textColor="@color/purple_200" />
+
+                            <ListView
+                                android:id="@+id/intimatetoo_list"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:scrollbars="none"
+                                android:visibility="gone" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+
+
+        <ProgressBar
+            android:id="@+id/progressCircular"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/noSearchLayout"
+            layout="@layout/no_search_here"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+    </RelativeLayout>
+</layout>
